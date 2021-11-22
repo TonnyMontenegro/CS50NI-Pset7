@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striped" style="text-align : left">
+        <thead>
+            <tr>
+                <td>Simbolo</td>
+                <td>Nombre</td>
+                <td>Acciones</td>
+                <td>Precio</td>
+                <td>Total</td>
+            </tr>
+             <tfoot>
+                <tr>
+                    <td colspan="4"> Total </td>
+                    <td>{{ total_del_valor_acciones | usd }}</td>
+              </tr>
+             </tfoot>
+             {% for h in Symbolo %}
+              <tr>
+                <td>{{ h.Simbolo }}</td>
+                <td>{{ h.Nombre }}</td>
+                <td>{{ h.Acciones }}</td>
+                <td>{{ h.Precio | usd }}</td>
+                <td>{{ h.Total | usd }}</td>
+            </tr>
+              {% endfor %}
+               <tr>
+                  <td colspan="4"> CASH </td>
+                  <td>{{ cash | usd }}</td>
+              </tr>
+
+
+        </thead>
+    </table>
+
+{% endblock %}
